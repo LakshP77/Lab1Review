@@ -19,11 +19,11 @@ public class Grader {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        // Ask the user how many grades they want to process
+
         System.out.print("Enter the number of grades you would like to process: ");
         int numGrades = input.nextInt();
 
-        // Validation loop: keep asking until user enters a positive number
+        
         while (numGrades <= 0) {
             System.out.print("Please enter a positive number of grades: ");
             numGrades = input.nextInt();
