@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.io.PrintWriter;
+import java.io.FileNotFoundException;;
 
 public class Grader {
 
@@ -79,12 +81,38 @@ public class Grader {
             grades[i] = input.nextInt();
         }
 
-        // Print grades with letter equivalents
-        System.out.println("\nGrades and Letter Grades:");
-        for (int i = 0; i < numGrades; i++) {
-            System.out.println("Grade: " + grades[i] + " → Letter: " + getLetterGrade(grades[i]));
-        }
+        //Prompt user for file name
+        System.out.println("Enter a file name to save results: ");
+        String fileName = input.next();
+
+        PrintWriter writer = null;
+        try {
+            // Open the file for writing
+            writer = new PrintWriter(fileName);
+
+
+            // write letter n number grades
+            for (int i = 0; i < numGrades; i++) {
+                writer.println(grades[i] + " " + getLetterGrade(grades[i]));
+            }
+
+            // write average at the end
+            double avg = average(grades);
+            writer.printf("Average: %.2f %s%n", avg, getLetterGrade(avg));
+
+            System.out.println("Grades successfully written to " + fileName);
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: Could not open file " + fileName);
+
+        } finally {
+            // Always close file if it was opened
+            if (writer != null) {
+                writer.close();
+            }
+
 
         input.close();
+        }   
     }
 }
