@@ -28,6 +28,35 @@ public class Grader {
         return letterGrade;
     }
 
+
+    // Q1 Answer: It is defined as method overloading, where the methods share the same name, but differ for their parameter list
+    // Q2 Answer: The "switch" statement in java cannot work with floating type integers like "double", which aren't fixed values
+
+
+    // Convert average grade (double) into a letter grade using if-else
+    public static String getLetterGrade(double score) {
+        if (score >= 90) {
+            return "A";
+        } else if (score >= 80) {
+            return "B";
+        } else if (score >= 70) {
+            return "C";
+        } else if (score >= 60) {
+            return "D";
+        } else {
+            return "F";
+        }
+    }
+
+    public static double average(int[] arr) {
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        return (double) sum / arr.length;  // cast to double for decimal precision
+    }
+
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
